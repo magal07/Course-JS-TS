@@ -64,7 +64,11 @@ form button:active {
     background: var(--button-color)
 }
 
-.paragrafo-resultado {
-    background-color: aquamarine;
+.paragrafo-resultado, .bad {
+    background: aquamarine;
     padding: 10px 20px;
+}
+
+.bad { 
+    background: rgb(218, 184, 184);
 }
