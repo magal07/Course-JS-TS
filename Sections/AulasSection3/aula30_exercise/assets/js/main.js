@@ -1,16 +1,9 @@
-// document.addEventListener('DOMContentLoaded', function() {
-//     var mainTitle = document.getElementById('data-atual');
-//     mainTitle.textContent = 'Novo título adicionado pelo main.js!';
-// });
-
-
-// função de dia da semana 
+const h1 = document.querySelector('.container h1');
+const data = new Date();
 
 function zeroAEsquerda (num) {
     return num >= 10 ? num : `0${num}`;
 }
-
-
 function getDiaSemanaTexto(diaSemana){
     let diaSemanaTexto;
     switch (diaSemana) {
@@ -40,8 +33,6 @@ function getDiaSemanaTexto(diaSemana){
                 diaSemanaTexto = ' '
     }
 }
-
-
 function getMesAnoTexto(mesAno){
     
     let mesAnoTexto;
@@ -89,19 +80,23 @@ function getMesAnoTexto(mesAno){
                 mesAnoTexto = 'Algo não parece certo.'
     }
 }
-
-// Correção de `data.getMonth` e `getMesAnoTexto`
-// Corrigido `data.getMonth()` para `mesAno = data.getMonth()`
-const data = new Date('2019-10-7 22:52:00');
+function criaData(data){
 let diaSemana = data.getDay();
 const diaSemanaTexto = getDiaSemanaTexto(diaSemana); 
 const diaAtual = (data.getDate());
 const mesAno = data.getMonth();
 const mesAnoTexto = getMesAnoTexto(mesAno);  // Chamada da função correta
 const anoNumber = data.getFullYear();
-const horasInf = zeroAEsquerda(data.getHours());
-const minutosInf = zeroAEsquerda(data.getMinutes());
-const segundosInf = zeroAEsquerda(data.getSeconds());
 
-console.log(`${diaSemanaTexto}, ${diaAtual} de ${mesAnoTexto} de ${anoNumber}`);
-console.log(`${horasInf}:${minutosInf}:${segundosInf}`);
+const horaCompleta = (zeroAEsquerda(data.getHours()) 
++ ":" + (zeroAEsquerda(data.getMinutes()) 
++ ":" + zeroAEsquerda(data.getSeconds())));
+
+return (`${diaSemanaTexto}, 
+    ${diaAtual} de 
+    ${mesAnoTexto} de 
+    ${anoNumber}
+    ${horaCompleta}`
+);
+}
+h1.innerHTML = criaData(data);
