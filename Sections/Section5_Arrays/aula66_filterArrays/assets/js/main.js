@@ -41,7 +41,6 @@ console.log(peopleName5Letter);
 const peopleAge50 = people.filter(obj => obj.age > 50);
 console.log(peopleAge50);
 
-// last letter 'a'
-// tolowerCase: convertendo para minuscula | endsWith: verificando se termina com 'a' -
+// tolowerCase: convert to uppercase | endsWith: Checking if it end whit 'a'
 const peopleLastLetterA = people.filter(obj => obj.name.toLowerCase().endsWith('a'));
 console.log(peopleLastLetterA);
