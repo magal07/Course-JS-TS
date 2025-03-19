@@ -78,11 +78,12 @@ function ValidateCPF(cpfSent) {
 
 // Método para verificar se o CPF é válido
 ValidateCPF.prototype.isValid = function() {
-  // Verifica se o CPF está definido e tem exatamente 11 dígitos
+  // Verifica se o CPF está definido e tem exatamente 11 dígitos ou nenhum digito
   if (typeof this.cpfClear === 'undefined') return false;
   if (this.cpfClear.length !== 11) return false;
 
-  // Verifica se o CPF é uma sequência de números iguais, o que é inválido
+  /* Verifica se o CPF é uma sequência de números iguais, o que é inválido pois
+     números iguais da true na validação do CPF */
   if (this.isSequence()) return false;
 
   // Extrai os primeiros 9 dígitos do CPF (parte principal)
