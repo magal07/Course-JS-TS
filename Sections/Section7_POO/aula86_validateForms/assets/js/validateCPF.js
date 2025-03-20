@@ -59,10 +59,10 @@ class ValidateCPF {
 }
 
 // Example of usage:
-let validateCPF = new ValidateCPF('705.484.450-52'); // Valid CPF
-// validateCPF = new ValidateCPF('111.111.111-11'); // Invalid CPF example
-if (validateCPF.isValid()) {
-  console.log('CPF is valid');
-} else {
-  console.log('CPF not valid');
-}
+// let validateCPF = new ValidateCPF('705.484.450-52'); // Valid CPF
+// // validateCPF = new ValidateCPF('111.111.111-11'); // Invalid CPF example
+// if (validateCPF.isValid()) {
+//   console.log('CPF is valid');
+// } else {
+//   console.log('CPF not valid');
+// }
