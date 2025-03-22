@@ -39,7 +39,9 @@ async function carregaPagina(el) {
     const href = el.getAttribute("href");
     const response = await fetch(href);
 
-    if (response.status !== 200) throw new Error('Erro 404!');
+    if (!response.ok){
+      throw new Error(`Response status: ${response.status}`);
+    }
 
     const html = await response.text();
     loadResult(html);
