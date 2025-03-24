@@ -23,3 +23,4 @@ export default class GenerateCPF {
     return this.format(newCpf);
   }
 }
+// Ratifying
