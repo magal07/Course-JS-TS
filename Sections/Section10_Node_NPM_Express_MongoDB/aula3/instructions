@@ -1,0 +1,12 @@
+VERSION
+
+major  minor  path
+2       .0     .0
+
+path: consert bug's
+minor: add modules
+major: alter compatibility
+
+npm i express@2.1.1 -E
+verify installation's: npm ls
+verify version : npm outdated  
