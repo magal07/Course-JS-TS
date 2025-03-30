@@ -1,12 +1,10 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-/*N precisa pois estamos usando pelo dotenv file, .env 
-const connectionString = 'mongodb+srv://magalhaesdev:zeXKxxFC0OFqm51P@cursojs.u6nwko2.mongodb.net/?retryWrites=true&w=majority&appName=CursoJS';*/
+
 const mongoose = require('mongoose'); // emitir sinal , base de dados conectada
 mongoose.connect(process.env.CONNECTIONSTRING)
 .then(()=> {
-  console.log('Conectei ao DB');
   app.emit('Pronto'); // capturando evento
 })
 .catch(e => console.log(e));
