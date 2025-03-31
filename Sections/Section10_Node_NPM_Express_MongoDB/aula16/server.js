@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-
 const mongoose = require('mongoose'); 
 mongoose.connect(process.env.CONNECTIONSTRING)
   .then(() => {
@@ -11,15 +10,15 @@ mongoose.connect(process.env.CONNECTIONSTRING)
 const session = require('express-session'); 
 const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
-
 const routes = require('./routes'); 
 const path = require('path');
-const { middewareGlobal } = require('./src/middlewares/middleware');
+const helmet = require('helmet');
+const csrf = require('csurf');
+const { middewareGlobal, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middleware');
 
+app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
-
-app.use(express.static(path.resolve(__dirname, 'public'))); // caminho absoluto de conteudos staticos
-
+app.use(express.static(path.resolve(__dirname, 'public'))); // caminho absoluto de conteudos statico
 const sessionOptions = session({
   secret: 'sdasdsdsadsadsadsadsadasdsadsa',
   store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING }),
@@ -38,7 +37,10 @@ app.set('views', path.resolve(__dirname, './src', 'views')); // caminho absoluto
 app.set('view engine', 'ejs'); // usando engine ejs pra conseguir utilizar cods js no html comand terminal (npm i ejs)
 
 // NOSSAS MIDDLEWARES
+app.use(csrf());
 app.use(middewareGlobal);
+app.use(checkCsrfError);
+app.use(csrfMiddleware);
 app.use(routes);
 
 app.on('Pronto', () => { // 'Pronto TEM Q SER IGUAL AO EVENTO EMIT'
