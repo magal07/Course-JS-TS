@@ -19,8 +19,8 @@ const path = require('path'); // Importa o módulo path para trabalhar com camin
 const helmet = require('helmet'); // Importa o Helmet para configurar cabeçalhos de segurança.
 const csrf = require('csurf'); // Importa csurf para proteção contra ataques CSRF (Cross-Site Request Forgery).
 
-const { middewareGlobal, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middleware'); // Importa middlewares personalizados para lógica adicional.
-const { json } = require('stream/consumers');
+const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middleware'); // Importa middlewares personalizados para lógica adicional.
+// const { json } = require('stream/consumers');
 
 // Configurações de segurança e middlewares
 app.use(helmet()); // Adiciona cabeçalhos de segurança ao aplicativo.
@@ -47,7 +47,7 @@ app.set('view engine', 'ejs'); // Define o EJS como mecanismo de visualização 
 
 // Configuração de middlewares
 app.use(csrf()); // Habilita a proteção contra ataques CSRF.
-app.use(middewareGlobal); // Middleware global para lógica adicional (personalizado).
+app.use(middlewareGlobal); // Middleware global para lógica adicional (personalizado).
 app.use(checkCsrfError); // Middleware para tratar erros relacionados ao CSRF.
 app.use(csrfMiddleware); // Middleware para configurar tokens CSRF.
 app.use(routes); // Ativa as rotas definidas em './routes'.
