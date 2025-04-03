@@ -16,12 +16,10 @@ module.exports = {
           loader: "babel-loader", // Usar Babel para transpilar
           options: {
             presets: ["@babel/env"], // Configuração do Babel
-          }
-        }
-      }, {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      }]
+          },
+        },
+      },
+    ],
   },
   devtool: "source-map", // Configuração global para source maps no Webpack
 };

@@ -5,33 +5,30 @@
     <div class="col-lg-2"></div>
 
     <div class="col-lg-8 my-3">
-      <h1 class="display-1 text-center">Schedule</h1>
+      <h1 class="display-1 text-center">Contacts</h1>
       <p class="text-center lead">Add, edit or create a new contact.</p>
 
       <% include('includes/messages') %>
 
+      <% if(contacts.length > 0) { %>
       <div class="responsive-table">
         <table class="table my-3">
+
+          <% contacts.forEach(contact => { %>
             <tr>
-                <td>Marcelo</td>
-                <td>Magalhães</td>
-                <td>11948683746</td>
-                <td>magalhaesdev@schedule.org</td>
-            </tr>
-            <tr>
-                <td>Marcelo</td>
-                <td>Magalhães</td>
-                <td>11948683746</td>
-                <td>magalhaesdev@schedule.org</td>
-            </tr>
-            <tr>
-                <td>Marcelo</td>
-                <td>Magalhães</td>
-                <td>11948683746</td>
-                <td>magalhaesdev@schedule.org</td>
-            </tr>
+              <td><%= contact.name %></td>
+              <td><%= contact.surname %></td>
+              <td><%= contact.telephone %></td>
+              <td><%= contact.email %></td>
+              <td><a href="/contact/index/<%= contact._id %>">Edit</a></td>
+              <td><a class="text-danger" href="/contact/delete/<%= contact._id %>">Delete</a></td>
+          </tr>
+        <%  }); %>
         </table>
       </div>
+      <% } else { %> 
+        <p class="text-center text-danger text-da lead">There are no contacts in your address book.</p>
+      <% }  %> 
 
     </div>
     <div class="col-lg-2"></div>
