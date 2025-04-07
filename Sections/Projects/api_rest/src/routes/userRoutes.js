@@ -7,7 +7,8 @@ const router = new Router();
 router.get('/', userController.index); // List users
 router.get('/:id', userController.show); // List user */
 
-router.post('/', userController.store);
+// retirei o post abaixo para não criarmos mais login na aplicação
+// router.post('/', userController.store);
 router.put('/', loginRequired, userController.update);
 router.delete('/', loginRequired, userController.delete);
 
