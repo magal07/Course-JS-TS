@@ -3,9 +3,9 @@ import userController from '../controllers/UserController';
 import loginRequired from '../middlewares/loginRequired';
 
 const router = new Router();
-
+/* Not necessary to use loginRequired middleware for these routes
 router.get('/', userController.index); // List users
-router.get('/:id', userController.show); // List user
+router.get('/:id', userController.show); // List user */
 
 router.post('/', userController.store);
 router.put('/', loginRequired, userController.update);
