@@ -1,9 +1,15 @@
 import styled, { createGlobalStyle } from 'styled-components';
 // eslint-disable-next-line
-import { primaryColor, primaryDarkColor } from '../config/colors'; // eslin
+import * as colors from '../config/colors';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default createGlobalStyle`
 * {
+  :root{
+  --toastify-icon-color-success: white;
+  --toastify-icon-color-error: white;
+}
+
   margin: 0;
   padding: 0;
   outline: none;
@@ -12,9 +18,28 @@ export default createGlobalStyle`
 
 body {
   font-family: sans-serif;
-  background: ${primaryDarkColor};
-  color: ${primaryDarkColor};
+  background: ${colors.primaryDarkColor};
+  color: ${colors.primaryDarkColor};
 }
+
+body .Toastify .Toastify__toast-container .Toastify__toast--success {
+  background: ${colors.successColor};
+  color: white;
+}
+.Toastify__progress-bar--success {
+  background: white;
+}
+
+body .Toastify .Toastify__toast-container .Toastify__toast--error {
+  background: ${colors.errorColor};
+  color: white;
+}
+
+.Toastify__progress-bar--error {
+  background: white;
+}
+
+
 
 html, body, #root {
   height: 100%;
@@ -22,7 +47,7 @@ html, body, #root {
 
 button {
   cursor: pointer;
-  background: ${primaryColor};
+  background: ${colors.primaryColor};
   border: none;
   color: #fff;
   padding: 10px 20px;
@@ -32,7 +57,7 @@ button {
 
 a {
   text-decoration: none;
-  color: ${primaryColor};
+  color: ${colors.primaryColor};
 }
 ul {
   list-style: none;
