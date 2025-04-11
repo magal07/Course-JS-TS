@@ -27,5 +27,6 @@ module.exports = {
     'import/prefer-default-export': 0,
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
   },
 };
