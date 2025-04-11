@@ -11,7 +11,7 @@ export default function Login() {
   function handleCLick(e) {
     e.preventDefault();
     // searching method clickedButton of actions.js
-    dispatch(exampleActions.clickedButton());
+    dispatch(exampleActions.clickedButtonRequest());
   }
 
   return (
