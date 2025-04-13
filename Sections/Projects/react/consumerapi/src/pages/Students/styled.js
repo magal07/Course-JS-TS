@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import * as colors from '../../config/colors';
 
 export const StudentContainer = styled.div`
   margin-top: 30px;
@@ -27,7 +28,7 @@ export const NewStudent = styled(Link)`
   justify-content: center;
   width: 100%;
   height: 44px;
-  background: linear-gradient(135deg, #ee4d64, #ff6b81);
+  background: linear-gradient(135deg, ${colors.primaryColor});
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -35,18 +36,20 @@ export const NewStudent = styled(Link)`
   font-weight: 600;
   text-decoration: none;
   margin-top: 20px;
-  box-shadow: 0 4px 14px rgba(238, 77, 100, 0.4);
+  box-shadow: 0 4px 14px ${colors.primaryColor};
   transition: all 0.3s ease;
 
   &:hover {
-    background: linear-gradient(135deg, #ff6b81, #ee4d64);
-    box-shadow: 0 6px 18px rgba(238, 77, 100, 0.5);
+    background: linear-gradient(135deg, ${colors.primaryDarkColor});
+    box-shadow:
+      0 6px 18px,
+      ${colors.primaryDarkColor};
     transform: translateY(-2px);
   }
 
   &:active {
     transform: translateY(0);
-    box-shadow: 0 3px 10px rgba(238, 77, 100, 0.3);
+    box-shadow: 0 3px 10px ${colors.primaryDarkColor};
   }
 `;
 
