@@ -4,24 +4,27 @@ import { isEmail, isInt, isFloat } from 'validator';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
+import { FaUserCircle, FaEdit } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import history from '../../services/history';
 
 import axios from '../../services/axios';
 import { Container } from '../../styles/GlobalStyles';
-import { Form } from './styled';
+import { Form, ProfilePicture, Title } from './styled';
 import Loading from '../../components/loading';
 import * as actions from '../../store/modules/auth/actions';
 
 export default function Student({ match }) {
   const dispatch = useDispatch();
 
-  const id = get(match, 'params.id', 0);
+  const id = get(match, 'params.id', '');
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
   const [age, setAge] = useState('');
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
+  const [photo, setPhoto] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -30,8 +33,9 @@ export default function Student({ match }) {
       try {
         setIsLoading(true);
         const { data } = await axios.get(`/students/${id}`);
-        // const Photo = get(data, 'Photos[0].url', '');
+        const Photo = get(data, 'Photos[0].url', '');
 
+        setPhoto(Photo);
         setName(data.name);
         setSurname(data.surname);
         setEmail(data.email);
@@ -135,8 +139,16 @@ export default function Student({ match }) {
   return (
     <Container>
       <Loading isLoading={isLoading} />
-      <h1>{id ? 'Edit Student' : 'New Student'}</h1>
+      <Title>{id ? 'Edit Student' : 'New Student'}</Title>
 
+      {id && (
+        <ProfilePicture>
+          {photo ? <img src={photo} alt={name} /> : <FaUserCircle size={100} />}
+          <Link to={`/photos/${id}`}>
+            <FaEdit size={24} color="#999" />
+          </Link>
+        </ProfilePicture>
+      )}
       <Form onSubmit={handleSubmit}>
         <input
           type="text"
